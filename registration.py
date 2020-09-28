@@ -56,22 +56,23 @@ def file_strings(strings):
 file_strings(strings)
 
 def sort_of():
-    f = open('goods.txt')
-    fp = f.readlines()
-    for sen in fp:
-        if 'samsung' or 'iphone' in sen:
-            with open('phones.txt','a') as f2:
-                f2.write(sen)
-        elif 'acer' or 'asus' or sen.startswith(mac) in sen:
-            with open('comp.txt','a') as f3:
-                f3.write(sen)
-        elif 'amd' or 'geforce' in sen:
-            with open('proc.txt','a') as f4:
-                f4.write(sen)
-        elif 'hdd' or 'ssd' in sen:
-            with open('disk.txt','a') as f5:
-                f5.write(sen)
-    f.close()
+    with open('goods.txt','r') as f:
+
+        var = f.readlines()
+        for sen in var:
+            if 'samsung' in sen or 'iphone' in sen:
+                with open('phones.txt','a') as f2:
+                    f2.write(sen)
+            elif 'acer' in sen or 'asus' in sen or 'macbook' in sen or 'mac' in sen:
+                with open('comp.txt','a') as f3:
+                    f3.write(sen)
+            elif 'amd' in sen or 'geforce' in sen:
+                with open('proc.txt','a') as f4:
+                    f4.write(sen)
+            elif 'hdd' in sen or 'ssd' in sen:
+                with open('disk.txt','a') as f5:
+                    f5.write(sen)
+
 sort_of()
 
 def open_file(filename):
@@ -80,13 +81,14 @@ def open_file(filename):
     return var
 open_file(filename='phones.txt')
 
-a = input("Введите товар :")
-if a == 'phones':
-    open('phones.txt','r')
-elif a == 'computers':
-    open('comp.txt','r')
-elif a == 'processors':
-    open('proc.txt','r')
-elif a == disks:
-    open('disk.txt','r')
-print(a)
+user_input = input("Введите товар :")
+if user_input == 'phones':
+    print(open_file('phones.txt'))
+elif user_input == 'computers':
+    print(open_file('comp.txt'))
+elif user_input == 'videocards':
+    print(open_file('proc.txt'))
+elif user_input == 'disks':
+    print(open_file('disk.txt'))
+print(user_input)
+
